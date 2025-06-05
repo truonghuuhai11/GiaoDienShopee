@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shopee Giao Diện</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+</head>
+
+<body class="bg-gray-100">
+    <header class="bg-[#ee4d2d] text-white">
+        <div class="container mx-auto flex justify-between items-center py-3 px-4">
+            <ul class="hidden md:flex gap-4 text-sm">
+                <li><a href="#" class="hover:underline">Kênh Người Bán</a></li>
+                <span>|</span>
+                <li>
+                    <a href="#" class="hover:underline">trở thành người bán cho shopee</a>
+                </li>
+                <li><a href="#" class="hover:underline">Tải Ứng Dụng</a></li>
+                <span>|</span>
+                <li><a href="#" class="hover:underline">Kết Nối</a></li>
+
+            </ul>
+            <div class="flex gap-4 text-sm">
+                <a href="#" class="hover:underline">Đăng Ký</a>
+                <span>|</span>
+                <a href="#" class="hover:underline">Đăng Nhập</a>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="bg-white shadow-sm py-4">
+        <div class="container mx-auto flex items-center gap-2 px-2">
+            <div class="text-2xl font-bold text-[#ee4d2d]">Shopee</div>
+            <input type="text" placeholder="Tìm sản phẩm..." class="flex-1 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#ee4d2d]">
+            <button class="bg-[#ee4d2d] text-white px-4 py-2 rounded hover:bg-orange-600" style="position: relative; margin-right: 200px">
+                <i class="fa fa-search" class="w-[100px]"
+                aria-hidden="true" style="font-size: 20px; font-weight: bolder; color: white;
+              "></i>
+            </button>
+            <a class="text-[#ee4d2d] font-semibold" style="font-size: 20px;" href="#!">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Danh mục sản phẩm -->
+    <section class="container mx-auto mt-6 px-4">
+        <h2 class="text-lg font-semibold mb-4">Danh Mục Sản Phẩm</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            <div class="bg-white p-4 rounded shadow text-center hover:shadow-lg transition">
+                <img src="https://via.placeholder.com/100" alt="Sản phẩm" class="mx-auto mb-2">
+                <p class="text-sm">Thời Trang</p>
+            </div>
+            <div class="bg-white p-4 rounded shadow text-center hover:shadow-lg transition">
+                <img src="https://via.placeholder.com/100" alt="Sản phẩm" class="mx-auto mb-2">
+                <p class="text-sm">Điện Thoại</p>
+            </div>
+            <div class="bg-white p-4 rounded shadow text-center hover:shadow-lg transition">
+                <img src="https://via.placeholder.com/100" alt="Sản phẩm" class="mx-auto mb-2">
+                <p class="text-sm">Thiết Bị Điện Tử</p>
+            </div>
+            <div class="bg-white p-4 rounded shadow text-center hover:shadow-lg transition">
+                <img src="https://via.placeholder.com/100" alt="Sản phẩm" class="mx-auto mb-2">
+                <p class="text-sm">Đồ Gia Dụng</p>
+            </div>
+            <div class="bg-white p-4 rounded shadow text-center hover:shadow-lg transition">
+                <img src="https://via.placeholder.com/100" alt="Sản phẩm" class="mx-auto mb-2">
+                <p class="text-sm">Sách</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-10 py-6 border-t">
+        <div class="container mx-auto text-center text-sm text-gray-600">
+            © 2025 Shopee Giao Diện. Thiết kế bằng Tailwind CSS.
+        </div>
+    </footer>
+
+</body>
+
+</html>

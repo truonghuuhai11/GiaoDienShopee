@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopee - Đăng Nhập</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #ee4d2d 0%, #ff6533 100%);
+        }
+
+        .form-container {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .input-focus:focus {
+            border-color: #ee4d2d;
+            box-shadow: 0 0 0 3px rgba(238, 77, 45, 0.1);
+        }
+
+        .btn-shopee {
+            background: linear-gradient(135deg, #ee4d2d 0%, #ff6533 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-shopee:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(238, 77, 45, 0.3);
+        }
+
+        .social-btn {
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-active {
+            color: #ee4d2d;
+            border-bottom: 2px solid #ee4d2d;
+        }
+
+        .floating-label {
+            transition: all 0.3s ease;
+        }
+
+        .input-filled+.floating-label,
+        .input:focus+.floating-label {
+            transform: translateY(-1.5rem) scale(0.85);
+            color: #ee4d2d;
+        }
+
+        /* Interactive feature cards */
+        .feature-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .feature-card:active {
+            transform: translateY(0);
+        }
+
+        /* Interactive main icon */
+        .main-icon {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .main-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Interactive shopping cart */
+        .shopping-cart {
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .shopping-cart:hover {
+            transform: scale(1.1);
+            animation: bounce 0.6s ease-in-out;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: scale(1.1) translateY(0);
+            }
+
+            40% {
+                transform: scale(1.1) translateY(-10px);
+            }
+
+            60% {
+                transform: scale(1.1) translateY(-5px);
+            }
+        }
+
+        /* Tooltip styles */
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .tooltip:hover::after {
+            opacity: 1;
+        }
+
+        /* Pulse animation for interactive elements */
+        .pulse-on-hover:hover {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(238, 77, 45, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(238, 77, 45, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(238, 77, 45, 0);
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white w-full shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-orange-500 rounded-sm flex items-center justify-center main-icon pulse-on-hover"
+                            onclick="showMessage('Chào mừng bạn đến với Shopee! 🛍️')" data-tooltip="Nhấn để chào hỏi!">
+                            <i class="fas fa-shopping-bag text-white text-sm"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-orange-500">Shopee</span>
+                        <span id="headerTitle" class="text-xl text-gray-700">Đăng nhập</span>
+                    </div>
+                </div>
+                <div class="text-orange-500 hover:text-orange-600 cursor-pointer tooltip" data-tooltip="Liên hệ hỗ trợ"
+                    onclick="showMessage('Chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7! 📞')">
+                    Bạn cần giúp đỡ?
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="gradient-bg min-h-screen pt-8 pb-12">
+        <div class="w-full max-w-4xl mx-auto px-4">
+            <!-- Brand Section -->
+            <div class="text-center mb-8">
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <div class="bg-white/20 p-3 rounded-full main-icon pulse-on-hover tooltip"
+                        data-tooltip="Shopee - Nền tảng mua sắm hàng đầu!"
+                        onclick="showMessage('Shopee - Nơi mua sắm trực tuyến hàng đầu Việt Nam! 🇻🇳')">
+                        <i class="fas fa-shopping-bag text-2xl text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold text-white">Shopee</h1>
+                        <p class="text-white/70 text-sm">Kênh Người Bán</p>
+                    </div>
+                </div>
+                <h2 class="text-xl font-semibold text-white mb-4">Nền tảng thương mại điện tử hàng đầu Đông Nam Á</h2>
+                <div class="flex justify-center items-center space-x-8 text-white/80 text-sm">
+                    <div class="flex items-center cursor-pointer tooltip" data-tooltip="Nhấn để xem thông tin chi tiết"
+                        onclick="showMessage('Shopee có hơn 100 triệu người dùng trên toàn khu vực! 👥')">
+                        <i class="fas fa-users mr-2"></i>
+                        <span>100M+ người dùng</span>
+                    </div>
+                    <div class="flex items-center cursor-pointer tooltip" data-tooltip="Nhấn để khám phá các cửa hàng"
+                        onclick="showMessage('Hơn 2 triệu cửa hàng đang hoạt động trên Shopee! 🏪')">
+                        <i class="fas fa-store mr-2"></i>
+                        <span>2M+ cửa hàng</span>
+                    </div>
+                    <div class="flex items-center cursor-pointer tooltip" data-tooltip="Nhấn để xem các quốc gia"
+                        onclick="showMessage('Shopee có mặt tại 8 quốc gia: Việt Nam, Singapore, Malaysia, Thailand, Indonesia, Philippines, Brazil, Mexico! 🌏')">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>8 quốc gia</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Container -->
+            <div class="form-container rounded-2xl shadow-2xl overflow-hidden max-w-5xl mx-auto">
+                <div class="flex flex-col lg:flex-row">
+                    <!-- Left Side - Interactive Illustration -->
+                    <div
+                        class="lg:w-1/2 bg-gradient-to-br from-orange-400 to-red-500 p-8 lg:p-12 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <div class="mb-8">
+                                <i class="fas fa-shopping-cart text-6xl mb-4 opacity-90 shopping-cart tooltip"
+                                    data-tooltip="Nhấn để bắt đầu mua sắm!"
+                                    onclick="showMessage('Hãy khám phá hàng triệu sản phẩm trên Shopee! 🛒✨')"></i>
+                                <h2 class="text-3xl font-bold mb-4">Chào mừng đến với Shopee!</h2>
+                                <p class="text-lg opacity-90">Khám phá hàng triệu sản phẩm với giá tốt nhất</p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div class="bg-white/20 rounded-lg p-3 feature-card tooltip"
+                                    data-tooltip="Miễn phí ship cho đơn từ 50k!"
+                                    onclick="showFeatureDetail('shipping')">
+                                    <i class="fas fa-shipping-fast text-2xl mb-2"></i>
+                                    <p>Miễn phí vận chuyển</p>
+                                </div>
+                                <div class="bg-white/20 rounded-lg p-3 feature-card tooltip"
+                                    data-tooltip="Cam kết 100% hàng chính hãng!"
+                                    onclick="showFeatureDetail('warranty')">
+                                    <i class="fas fa-shield-alt text-2xl mb-2"></i>
+                                    <p>Bảo hành chính hãng</p>
+                                </div>
+                                <div class="bg-white/20 rounded-lg p-3 feature-card tooltip"
+                                    data-tooltip="Flash sale, voucher, hoàn xu mỗi ngày!"
+                                    onclick="showFeatureDetail('deals')">
+                                    <i class="fas fa-gift text-2xl mb-2"></i>
+                                    <p>Ưu đãi hấp dẫn</p>
+                                </div>
+                                <div class="bg-white/20 rounded-lg p-3 feature-card tooltip"
+                                    data-tooltip="Đội ngũ CSKH luôn sẵn sàng hỗ trợ!"
+                                    onclick="showFeatureDetail('support')">
+                                    <i class="fas fa-headset text-2xl mb-2"></i>
+                                    <p>Hỗ trợ 24/7</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side - Form -->
+                    <div class="lg:w-1/2 p-8 lg:p-12">
+                        <!-- Tabs -->
+                        <div class="flex border-b mb-8">
+                            <button onclick="switchTab('login')" id="loginTab"
+                                class="flex-1 py-3 px-4 text-center font-semibold tab-active">
+                                Đăng Nhập
+                            </button>
+                            <button onclick="switchTab('register')" id="registerTab"
+                                class="flex-1 py-3 px-4 text-center font-semibold text-gray-600">
+                                Đăng Ký
+                            </button>
+                        </div>
+
+                        <!-- Login Form -->
+                        <form id="loginForm" class="space-y-6">
+                            <div class="relative">
+                                <input type="text" id="loginEmail"
+                                    class="input w-full px-4 py-3 border border-gray-300 rounded-lg input-focus outline-none peer"
+                                    placeholder=" ">
+                                <label for="loginEmail"
+                                    class="floating-label absolute left-4 top-3 text-gray-500 pointer-events-none">Email/Số
+                                    điện thoại</label>
+                            </div>
+
+                            <div class="relative">
+                                <input type="password" id="loginPassword"
+                                    class="input w-full px-4 py-3 border border-gray-300 rounded-lg input-focus outline-none peer"
+                                    placeholder=" ">
+                                <label for="loginPassword"
+                                    class="floating-label absolute left-4 top-3 text-gray-500 pointer-events-none">Mật
+                                    khẩu</label>
+                                <button type="button" onclick="togglePassword('loginPassword')"
+                                    class="absolute right-4 top-3 text-gray-500 hover:text-gray-700 tooltip"
+                                    data-tooltip="Hiện/ẩn mật khẩu">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <label class="flex items-center">
+                                    <input type="checkbox"
+                                        class="rounded border-gray-300 text-orange-500 focus:ring-orange-500">
+                                    <span class="ml-2 text-sm text-gray-600">Ghi nhớ đăng nhập</span>
+                                </label>
+                                <a href="#" class="text-sm text-orange-500 hover:text-orange-600 tooltip"
+                                    data-tooltip="Khôi phục mật khẩu qua email/SMS"
+                                    onclick="showMessage('Chức năng khôi phục mật khẩu sẽ được gửi qua email hoặc SMS! 📧')">Quên
+                                    mật khẩu?</a>
+                            </div>
+
+                            <button type="submit" class="btn-shopee w-full text-white py-3 rounded-lg font-semibold">
+                                Đăng Nhập
+                            </button>
+
+                            <div class="text-center">
+                                <p class="text-gray-500 mb-4">Hoặc đăng nhập bằng</p>
+                                <div class="flex space-x-4">
+                                    <button type="button"
+                                        class="social-btn flex-1 flex items-center justify-center py-3 border border-gray-300 rounded-lg hover:bg-gray-50 tooltip"
+                                        data-tooltip="Đăng nhập nhanh với Facebook"
+                                        onclick="showMessage('Đăng nhập với Facebook để đồng bộ thông tin! 👥')">
+                                        <i class="fab fa-facebook text-blue-600 mr-2"></i>
+                                        Facebook
+                                    </button>
+                                    <button type="button"
+                                        class="social-btn flex-1 flex items-center justify-center py-3 border border-gray-300 rounded-lg hover:bg-gray-50 tooltip"
+                                        data-tooltip="Đăng nhập nhanh với Google"
+                                        onclick="showMessage('Đăng nhập với Google để trải nghiệm nhanh chóng! 🚀')">
+                                        <i class="fab fa-google text-red-500 mr-2"></i>
+                                        Google
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Register Form -->
+                        <form id="registerForm" class="space-y-6 hidden">
+                            <div class="relative">
+                                <input type="text" id="registerPhone"
+                                    class="input w-full px-4 py-3 border border-gray-300 rounded-lg input-focus outline-none peer"
+                                    placeholder=" ">
+                                <label for="registerPhone"
+                                    class="floating-label absolute left-4 top-3 text-gray-500 pointer-events-none">Số
+                                    điện
+                                    thoại</label>
+                            </div>
+
+                            <div class="flex space-x-4">
+                                <div class="relative flex-1">
+                                    <input type="text" id="verificationCode"
+                                        class="input w-full px-4 py-3 border border-gray-300 rounded-lg input-focus outline-none peer"
+                                        placeholder=" ">
+                                    <label for="verificationCode"
+                                        class="floating-label absolute left-4 top-3 text-gray-500 pointer-events-none">Mã
+                                        xác thực</label>
+                                </div>
+                                <button type="button" onclick="sendVerificationCode()"
+                                    class="px-6 py-3 border border-orange-500 text-orange-500 rounded-lg hover:bg-orange-50 tooltip"
+                                    data-tooltip="Gửi mã OTP về số điện thoại">
+                                    Gửi
+                                </button>
+                            </div>
+
+                            <div class="relative">
+                                <input type="password" id="registerPassword"
+                                    class="input w-full px-4 py-3 border border-gray-300 rounded-lg input-focus outline-none peer"
+                                    placeholder=" ">
+                                <label for="registerPassword"
+                                    class="floating-label absolute left-4 top-3 text-gray-500 pointer-events-none">Mật
+                                    khẩu</label>
+                                <button type="button" onclick="togglePassword('registerPassword')"
+                                    class="absolute right-4 top-3 text-gray-500 hover:text-gray-700 tooltip"
+                                    data-tooltip="Hiện/ẩn mật khẩu">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                            </div>
+
+                            <div class="relative">
+                                <input type="password" id="confirmPassword"
+                                    class="input w-full px-4 py-3 border border-gray-300 rounded-lg input-focus outline-none peer"
+                                    placeholder=" ">
+                                <label for="confirmPassword"
+                                    class="floating-label absolute left-4 top-3 text-gray-500 pointer-events-none">Xác
+                                    nhận
+                                    mật khẩu</label>
+                                <button type="button" onclick="togglePassword('confirmPassword')"
+                                    class="absolute right-4 top-3 text-gray-500 hover:text-gray-700 tooltip"
+                                    data-tooltip="Hiện/ẩn mật khẩu">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                            </div>
+
+                            <div class="flex items-start">
+                                <input type="checkbox" id="agreeTerms"
+                                    class="mt-1 rounded border-gray-300 text-orange-500 focus:ring-orange-500">
+                                <label for="agreeTerms" class="ml-2 text-sm text-gray-600">
+                                    Tôi đã đọc và đồng ý với
+                                    <a href="#" class="text-orange-500 hover:text-orange-600 tooltip"
+                                        data-tooltip="Xem điều khoản sử dụng dịch vụ"
+                                        onclick="showMessage('Điều khoản dịch vụ bảo vệ quyền lợi của bạn! 📋')">Điều
+                                        khoản dịch vụ</a>
+                                    và
+                                    <a href="#" class="text-orange-500 hover:text-orange-600 tooltip"
+                                        data-tooltip="Xem chính sách bảo mật dữ liệu"
+                                        onclick="showMessage('Chúng tôi cam kết bảo mật thông tin cá nhân của bạn! 🔒')">Chính
+                                        sách bảo mật</a>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn-shopee w-full text-white py-3 rounded-lg font-semibold">
+                                Đăng Ký
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Modal -->
+    <div id="messageModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+        <div class="bg-white rounded-lg p-6 max-w-md mx-4 transform transition-all duration-300 scale-95">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-orange-500">Thông tin</h3>
+                <button onclick="closeMessage()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <p id="messageText" class="text-gray-700 mb-4"></p>
+            <button onclick="closeMessage()" class="btn-shopee px-4 py-2 text-white rounded-lg">
+                Đóng
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 w-full">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-gray-600">
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-4">CHĂM SÓC KHÁCH HÀNG</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Trung Tâm Trợ Giúp</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Shopee Blog</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Shopee Mall</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Hướng Dẫn Mua Hàng</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Hướng Dẫn Bán Hàng</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Thanh Toán</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Shopee Xu</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Vận Chuyển</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Trả Hàng & Hoàn Tiền</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Chăm Sóc Khách Hàng</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Chính Sách Bảo Hành</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-4">VỀ SHOPEE</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Giới Thiệu Về Shopee Việt
+                                Nam</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Tuyển Dụng</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Điều Khoản Shopee</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Chính Sách Bảo Mật</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Chính Hãng</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Kênh Người Bán</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Flash Sales</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Chương Trình Tiếp Thị Liên
+                                Kết</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors">Liên Hệ Với Truyền Thông</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-4">THANH TOÁN</h3>
+                    <div class="grid grid-cols-3 gap-2 mb-6">
+                        <div class="w-12 h-8 bg-white border rounded flex items-center justify-center">
+                            <span class="text-xs font-bold text-blue-600">VISA</span>
+                        </div>
+                        <div class="w-12 h-8 bg-white border rounded flex items-center justify-center">
+                            <span class="text-xs font-bold text-red-600">MC</span>
+                        </div>
+                        <div class="w-12 h-8 bg-white border rounded flex items-center justify-center">
+                            <span class="text-xs font-bold text-green-600">JCB</span>
+                        </div>
+                        <div class="w-12 h-8 bg-white border rounded flex items-center justify-center">
+                            <span class="text-xs font-bold text-gray-600">COD</span>
+                        </div>
+                        <div class="w-12 h-8 bg-white border rounded flex items-center justify-center">
+                            <span class="text-xs font-bold text-blue-800">ATM</span>
+                        </div>
+                        <div class="w-12 h-8 bg-orange-500 rounded flex items-center justify-center">
+                            <span class="text-xs font-bold text-white">SPay</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-4">ĐƠN VỊ VẬN CHUYỂN</h3>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="w-12 h-8 bg-white border rounded flex items-center justify-center">
+                            <span class="text-xs font-bold text-orange-500">SPX</span>
+                        </div>
+                        <div class="w-12 h-8 bg-white border rounded flex items-center justify-center">
+                            <span class="text-xs font-bold text-blue-600">GHN</span>
+                        </div>
+                        <div class="w-12 h-8 bg-white border rounded flex items-center justify-center">
+                            <span class="text-xs font-bold text-green-600">GHTK</span>
+                        </div>
+                        <div class="w-12 h-8 bg-white border rounded flex items-center justify-center">
+                            <span class="text-xs font-bold text-red-600">VTP</span>
+                        </div>
+                        <div class="w-12 h-8 bg-white border rounded flex items-center justify-center">
+                            <span class="text-xs font-bold text-yellow-600">VNP</span>
+                        </div>
+                        <div class="w-12 h-8 bg-white border rounded flex items-center justify-center">
+                            <span class="text-xs font-bold text-red-500">J&T</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-4">THEO DÕI CHÚNG TÔI TRÊN</h3>
+                    <ul class="space-y-2 text-sm mb-6">
+                        <li><a href="#" class="hover:text-orange-500 transition-colors flex items-center"><i
+                                    class="fab fa-facebook mr-2 text-blue-600"></i>Facebook</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors flex items-center"><i
+                                    class="fab fa-instagram mr-2 text-pink-600"></i>Instagram</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition-colors flex items-center"><i
+                                    class="fab fa-linkedin mr-2 text-blue-700"></i>LinkedIn</a></li>
+                    </ul>
+                    <h3 class="font-bold text-gray-800 mb-4">TẢI ỨNG DỤNG SHOPEE NGAY THÔI</h3>
+                    <div class="flex space-x-3">
+                        <div class="w-20 h-20 bg-white border rounded-lg flex items-center justify-center">
+                            <div class="w-16 h-16 bg-gray-200 rounded flex items-center justify-center">
+                                <i class="fas fa-qrcode text-gray-600"></i>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="w-24 h-8 bg-black rounded flex items-center justify-center">
+                                <span class="text-white text-xs">App Store</span>
+                            </div>
+                            <div class="w-24 h-8 bg-black rounded flex items-center justify-center">
+                                <span class="text-white text-xs">Google Play</span>
+                            </div>
+                            <div class="w-24 h-8 bg-black rounded flex items-center justify-center">
+                                <span class="text-white text-xs">AppGallery</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gray-200 w-full">
+            <div class="max-w-7xl mx-auto px-4 py-6">
+                <div class="text-center text-gray-500 text-sm mb-4">
+                    <p>© 2024 Shopee. Tất cả các quyền được bảo lưu.</p>
+                </div>
+                <div class="flex justify-center items-center space-x-4 text-xs text-gray-500">
+                    <span>Quốc gia & Khu vực:</span>
+                    <a href="#" class="hover:text-orange-500 transition-colors">Singapore</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-orange-500 transition-colors">Indonesia</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-orange-500 transition-colors">Thái Lan</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-orange-500 transition-colors">Malaysia</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-orange-500 transition-colors">Việt Nam</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-orange-500 transition-colors">Philippines</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-orange-500 transition-colors">Brazil</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-orange-500 transition-colors">México</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-orange-500 transition-colors">Colombia</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-orange-500 transition-colors">Chile</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Switch between login and register tabs
+        function switchTab(tab) {
+            const loginTab = document.getElementById('loginTab');
+            const registerTab = document.getElementById('registerTab');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const headerTitle = document.getElementById('headerTitle');
+            const pageTitle = document.querySelector('title');
+
+            if (tab === 'login') {
+                loginTab.classList.add('tab-active');
+                loginTab.classList.remove('text-gray-600');
+                registerTab.classList.remove('tab-active');
+                registerTab.classList.add('text-gray-600');
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+
+                // Update header and page title
+                headerTitle.textContent = 'Đăng nhập';
+                pageTitle.textContent = 'Shopee - Đăng Nhập';
+            } else {
+                registerTab.classList.add('tab-active');
+                registerTab.classList.remove('text-gray-600');
+                loginTab.classList.remove('tab-active');
+                loginTab.classList.add('text-gray-600');
+                registerForm.classList.remove('hidden');
+                loginForm.classList.add('hidden');
+
+                // Update header and page title
+                headerTitle.textContent = 'Đăng ký';
+                pageTitle.textContent = 'Shopee - Đăng Ký';
+            }
+        }
+
+        // Toggle password visibility
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.nextElementSibling.querySelector('i');
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('far', 'fa-eye');
+                icon.classList.add('fas', 'fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fas', 'fa-eye-slash');
+                icon.classList.add('far', 'fa-eye');
+            }
+        }
+
+        // Send verification code
+        function sendVerificationCode() {
+            const button = event.target;
+            const phone = document.getElementById('registerPhone').value;
+
+            if (!phone) {
+                alert('Vui lòng nhập số điện thoại');
+                return;
+            }
+
+            button.textContent = 'Đang gửi...';
+            button.disabled = true;
+
+            // Simulate sending code
+            setTimeout(() => {
+                button.textContent = 'Gửi lại (60s)';
+                let countdown = 60;
+                const timer = setInterval(() => {
+                    countdown--;
+                    button.textContent = `Gửi lại (${countdown}s)`;
+                    if (countdown === 0) {
+                        clearInterval(timer);
+                        button.textContent = 'Gửi';
+                        button.disabled = false;
+                    }
+                }, 1000);
+            }, 1000);
+        }
+
+        // Handle form submissions
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                alert('Vui lòng điền đầy đủ thông tin');
+                return;
+            }
+
+            // Simulate login
+            alert('Đăng nhập thành công!');
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const phone = document.getElementById('registerPhone').value;
+            const code = document.getElementById('verificationCode').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const agreeTerms = document.getElementById('agreeTerms').checked;
+
+            if (!phone || !code || !password || !confirmPassword) {
+                alert('Vui lòng điền đầy đủ thông tin');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Mật khẩu xác nhận không khớp');
+                return;
+            }
+
+            if (!agreeTerms) {
+                alert('Vui lòng đồng ý với điều khoản dịch vụ');
+                return;
+            }
+
+            // Simulate registration
+            alert('Đăng ký thành công!');
+        });
+
+        // Handle floating labels
+        document.querySelectorAll('.input').forEach(input => {
+            input.addEventListener('input', function () {
+                if (this.value.trim() !== '') {
+                    this.classList.add('input-filled');
+                } else {
+                    this.classList.remove('input-filled');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

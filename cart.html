@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Giỏ hàng - Shopee</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="assets/css/cart.css"/>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="cart-header">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="index.html" class="text-white text-2xl">
+                    <i class="fas fa-shopping-bag"></i>
+                </a>
+                <h1 class="cart-title">Giỏ Hàng</h1>
+            </div>
+            <div class="flex items-center gap-4 text-sm text-white">
+                <a href="#" class="hover:text-gray-200">Đăng Ký</a>
+                <span>|</span>
+                <a href="#" class="hover:text-gray-200">Đăng Nhập</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="cart-container">
+        <!-- Cart Items -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-4">
+            <div class="p-4 border-b flex items-center text-gray-700">
+                <div class="w-1/2 flex items-center gap-4">
+                    <input type="checkbox" class="select-all-checkbox w-5 h-5 rounded border-gray-300">
+                    <span class="font-medium">Sản phẩm</span>
+                </div>
+                <div class="w-1/2 flex">
+                    <div class="w-1/4 text-center">Đơn giá</div>
+                    <div class="w-1/4 text-center">Số lượng</div>
+                    <div class="w-1/4 text-center">Số tiền</div>
+                    <div class="w-1/4 text-center">Thao tác</div>
+                </div>
+            </div>
+
+            <!-- Cart Item 1 -->
+            <div class="cart-item p-4 flex items-center">
+                <div class="w-1/2 flex items-center gap-4">
+                    <input type="checkbox" class="cart-item-checkbox w-5 h-5 rounded border-gray-300">
+                    <img src="https://via.placeholder.com/80" alt="Product" class="product-image">
+                    <div class="product-details">
+                        <h3>Áo thun nam cổ tròn basic</h3>
+                        <span class="product-variant">Phân loại: Trắng, L</span>
+                    </div>
+                </div>
+                <div class="w-1/2 flex">
+                    <div class="w-1/4 text-center">
+                        <span class="price" data-price="159000">₫159.000</span>
+                    </div>
+                    <div class="w-1/4 flex justify-center">
+                        <div class="quantity-control">
+                            <button class="quantity-btn">-</button>
+                            <input type="number" value="1" class="quantity-input">
+                            <button class="quantity-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="w-1/4 text-center">
+                        <span class="price" data-price="159000">₫159.000</span>
+                    </div>
+                    <div class="w-1/4 text-center">
+                        <button class="delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Item 2 -->
+            <div class="cart-item p-4 flex items-center border-t">
+                <div class="w-1/2 flex items-center gap-4">
+                    <input type="checkbox" class="cart-item-checkbox w-5 h-5 rounded border-gray-300">
+                    <img src="https://via.placeholder.com/80" alt="Product" class="product-image">
+                    <div class="product-details">
+                        <h3>Quần jean nam form regular</h3>
+                        <span class="product-variant">Phân loại: Xanh đậm, 32</span>
+                    </div>
+                </div>
+                <div class="w-1/2 flex">
+                    <div class="w-1/4 text-center">
+                        <span class="price" data-price="359000">₫359.000</span>
+                    </div>
+                    <div class="w-1/4 flex justify-center">
+                        <div class="quantity-control">
+                            <button class="quantity-btn">-</button>
+                            <input type="number" value="1" class="quantity-input">
+                            <button class="quantity-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="w-1/4 text-center">
+                        <span class="price" data-price="359000">₫359.000</span>
+                    </div>
+                    <div class="w-1/4 text-center">
+                        <button class="delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Voucher Section -->
+        <div class="voucher-section">
+            <div class="voucher-button">
+                <i class="fas fa-ticket-alt"></i>
+                <span>Chọn Voucher</span>
+            </div>
+            <div class="selected-voucher text-sm text-gray-500 mt-2"></div>
+        </div>
+
+        <!-- Cart Summary -->
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Tổng tiền hàng</span>
+                <span>₫518.000</span>
+            </div>
+            <div class="summary-row">
+                <span>Giảm giá voucher</span>
+                <span class="voucher-discount">-₫0</span>
+            </div>
+            <div class="summary-total flex justify-between items-center">
+                <span>Tổng thanh toán (<span class="selected-count">0</span> sản phẩm):</span>
+                <span class="price">₫0</span>
+            </div>
+            <button class="checkout-btn mt-4">
+                Mua Hàng
+            </button>
+        </div>
+    </div>
+
+    <!-- Voucher Modal -->
+    <div class="voucher-modal">
+        <div class="voucher-content">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-medium">Chọn Voucher</h3>
+                <button class="close-voucher-modal text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="voucher-list">
+                <div class="voucher-item" data-code="GIAMGIA50K" data-discount="50000">
+                    <div class="voucher-logo">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="voucher-info">
+                        <h4>Giảm 50K</h4>
+                        <p>Đơn tối thiểu ₫500K</p>
+                    </div>
+                </div>
+                <div class="voucher-item" data-code="FREESHIP" data-discount="30000">
+                    <div class="voucher-logo">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="voucher-info">
+                        <h4>Miễn phí vận chuyển</h4>
+                        <p>Giảm 30K phí vận chuyển</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-10 py-6 border-t">
+        <div class="container mx-auto text-center text-sm text-gray-600">
+            © 2025 Shopee. Thiết kế bằng Tailwind CSS.
+        </div>
+    </footer>
+
+    <script src="assets/js/cart.js"></script>
+</body>
+
+</html> 

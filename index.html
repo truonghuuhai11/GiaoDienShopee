@@ -10,6 +10,10 @@
     <link href="assets/css/main.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <!-- Swiper CSS --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
     <script src="bootstrap/js/bootstrap.bundle.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
 
@@ -59,7 +63,7 @@
                         <a href="#" class="hover:text-yellow-300 transition">Kem chống nắng</a>
                     </div>
                 </div>
-                <a href="#" class="text-white text-2xl relative" aria-label="Giỏ hàng">
+                <a href="cart.html" class="text-white text-2xl relative" aria-label="Giỏ hàng">
                     <i class="fa fa-shopping-cart"></i>
                     <span class="absolute -top-2 -right-2 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full border border-white bg-[#ee4d2d]" id="cart-count">3</span>
                 </a>
@@ -82,7 +86,7 @@
                             <button type="button" data-bs-target="#shopeeBanner" data-bs-slide-to="4" aria-label="Slide 5"></button>
                             <button type="button" data-bs-target="#shopeeBanner" data-bs-slide-to="5" aria-label="Slide 6"></button>
                             <button type="button" data-bs-target="#shopeeBanner" data-bs-slide-to="6" aria-label="Slide 7"></button>
-                            <button type="button" data-bs-target="#shopeeBanner" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                            <button type="button" data-bs-ta    rget="#shopeeBanner" data-bs-slide-to="7" aria-label="Slide 8"></button>
                             <button type="button" data-bs-target="#shopeeBanner" data-bs-slide-to="8" aria-label="Slide 9"></button>
                         </div>
                         <div class="carousel-inner h-100">
@@ -131,50 +135,94 @@
     </section>
 
 
-    <section class="max-w-screen-xl mx-auto mt-6 px-4">
-        <h2 class="text-lg font-semibold mb-4 text-gray-800">Danh Mục Sản Phẩm</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <div class="bg-white p-4 rounded shadow text-center hover:shadow-lg transition">
-                <img src="assets/images/thời trang nam.webp" alt="Thời Trang" class="mx-auto mb-2 object-cover" />
-                <p class="text-sm font-medium">Thời trang nam</p>
-            </div>
-            <div class="bg-white p-4 rounded shadow text-center hover:shadow-lg transition">
-                <img src="assets/images/điện thoại.webp" alt="Điện Thoại & Phụ Kiện" class="mx-auto mb-2 object-cover" />
-                <p class="text-sm font-medium">Điện Thoại & Phụ Kiện</p>
-            </div>
-            <div class="bg-white p-4 rounded shadow text-center hover:shadow-lg transition">
-                <img src="assets/images/thiết bị điện tử.webp" alt="Máy Tính & Laptop" class="mx-auto mb-2 object-cover" />
-                <p class="text-sm font-medium">Thiết bị điện tử</p>
-            </div>
-            <div class="bg-white p-4 rounded shadow text-center hover:shadow-lg transition">
-                <img src="assets/images/máy tính và laptop.webp" alt="Máy Ảnh & Máy Quay" class="mx-auto mb-2 object-cover" />
-                <p class="text-sm font-medium">Máy tính và laptop</p>
-            </div>
-            <div class="bg-white p-4 rounded shadow text-center hover:shadow-lg transition">
-                <img src="assets/images/máy ảnh và quay phim.webp" alt="Đồng Hồ" class="mx-auto mb-2 object-cover" />
-                <p class="text-sm font-medium">Máy ảnh & Quay Phim</p>
-            </div>
-            <div class="bg-white p-4 rounded shadow text-center hover:shadow-lg transition">
-                <img src="assets/images/đồng hồ.webp" alt="Giày Dép" class="mx-auto mb-2 object-cover" />
-                <p class="text-sm font-medium">Đồng Hồ</p>
-            </div>
-            <div class="bg-white p-4 rounded shadow text-center hover:shadow-lg transition">
-                <img src="assets/images/giaydepnam.webp" alt="Giày Dép" class="mx-auto mb-2 object-cover" />
-                <p class="text-sm font-medium">Giày Dép Nam</p>
-            </div>
-            <div class="bg-white p-4 rounded shadow text-center hover:shadow-lg transition">
-                <img src="assets/images/thietbigiadung.webp" alt="Giày Dép" class="mx-auto mb-2 object-cover" />
-                <p class="text-sm font-medium">Thiết Bị Gia Dụng</p>
-            </div>
-            <div class="bg-white p-4 rounded shadow text-center hover:shadow-lg transition">
-                <img src="assets/images/thethaodulic.webp" alt="Giày Dép" class="mx-auto mb-2 object-cover" />
-                <p class="text-sm font-medium">Thê Thao & Du Lịch</p>
-            </div>
-            <div class="bg-white p-4 rounded shadow text-center hover:shadow-lg transition">
-                <img src="assets/images/otovaxedep.webp" alt="Giày Dép" class="mx-auto mb-2 object-cover" />
-                <p class="text-sm font-medium">Ô tô & Xe Máy</p>
-            </div>
+    <section class="container mt-4">
+        <div class="bg-white rounded shadow p-4">
+            <h2 class="mb-4 fw-semibold text-gray-800">Danh Mục Sản Phẩm</h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Danh mục sản phẩm -->
+                    <div class="swiper-slide text-center">
+                        <div class="category-item">
+                            <img src="assets/images/thời trang nam.webp" alt="Thời Trang Nam" class="img-fluid rounded mb-2" />
+                            <p class="small text-gray-600">Thời trang nam</p>
+                        </div>
+                    </div>
 
+                    <div class="swiper-slide text-center">
+                        <div class="category-item">
+                            <img src="assets/images/điện thoại.webp" alt="Điện Thoại" class="img-fluid rounded mb-2" />
+                            <p class="small text-gray-600">Điện Thoại & Phụ Kiện</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide text-center">
+                        <div class="category-item">
+                            <img src="assets/images/thiết bị điện tử.webp" alt="Thiết Bị Điện Tử" class="img-fluid rounded mb-2" />
+                            <p class="small text-gray-600">Thiết bị điện tử</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide text-center">
+                        <div class="category-item">
+                            <img src="assets/images/máy tính và laptop.webp" alt="Máy Tính & Laptop" class="img-fluid rounded mb-2" />
+                            <p class="small text-gray-600">Máy tính & Laptop</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide text-center">
+                        <div class="category-item">
+                            <img src="assets/images/máy ảnh và quay phim.webp" alt="Máy Ảnh & Quay Phim" class="img-fluid rounded mb-2" />
+                            <p class="small text-gray-600">Máy ảnh và quay phim</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide text-center">
+                        <div class="category-item">
+                            <img src="assets/images/đồng hồ.webp" alt="Đồng Hồ" class="img-fluid rounded mb-2" />
+                            <p class="small text-gray-600">Đồng hồ</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide text-center">
+                        <div class="category-item">
+                            <img src="assets/images/giaydepnam.webp" alt="Giày Dép Nam" class="img-fluid rounded mb-2" />
+                            <p class="small text-gray-600">Giày dép nam</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide text-center">
+                        <div class="category-item">
+                            <img src="assets/images/thietbigiadung.webp" alt="Thiết Bị Gia Dụng" class="img-fluid rounded mb-2" />
+                            <p class="small text-gray-600">Thiết bị đồ gia dụng</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide text-center">
+                        <div class="category-item">
+                            <img src="assets/images/thethaodulic.webp" alt="Thể Thao & Du Lịch" class="img-fluid rounded mb-2" />
+                            <p class="small text-gray-600">Thể Thao & Du lịch</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide text-center">
+                        <div class="category-item">
+                            <img src="assets/images/otovaxedep.webp" alt="Ô tô & Xe Máy" class="img-fluid rounded mb-2" />
+                            <p class="small text-gray-600">Ô tô & xe máy & xe đạp</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide text-center">
+                        <div class="category-item">
+                            <img src="assets/images/thoitrangnu.webp" alt="Thời Trang Nữ" class="img-fluid rounded mb-2" />
+                            <p class="small text-gray-600">Thời trang nữ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next" style="color: #ee4d2d; right: 0;"></div>
+                <div class="swiper-button-prev" style="color: #ee4d2d; left: 0;"></div>
+            </div>
         </div>
     </section>
 
@@ -182,42 +230,64 @@
     <section class="max-w-screen-xl mx-auto mt-6 px-4">
         <div class="bg-white rounded shadow p-4">
             <div class="flex items-center justify-between mb-4">
-                <h2 class="text-lg font-semibold text-gray-800">FLASH SALE</h2>
+                <div class="flex items-center gap-2">
+                    <img src="assets/images/flashsale.png" alt="Flash Sale" class="h-8" />
+                    <h2 class="text-lg font-semibold text-gray-800">FLASH SALE</h2>
+                </div>
                 <div class="flex items-center space-x-2">
                     <span class="text-sm text-gray-600">Kết thúc trong</span>
-                    <div class="bg-red-500 text-white px-2 py-1 rounded">02</div>
+                    <div class="bg-red-500 text-white px-2 py-1 rounded text-sm font-medium">02</div>
                     <span>:</span>
-                    <div class="bg-red-500 text-white px-2 py-1 rounded">45</div>
+                    <div class="bg-red-500 text-white px-2 py-1 rounded text-sm font-medium">45</div>
                     <span>:</span>
-                    <div class="bg-red-500 text-white px-2 py-1 rounded">33</div>
+                    <div class="bg-red-500 text-white px-2 py-1 rounded text-sm font-medium">33</div>
                 </div>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
                 <!-- Flash Sale Items -->
-                <div class="border rounded p-2">
-                    <img src="https://via.placeholder.com/150" alt="Product" class="w-full h-32 object-cover mb-2" />
-                    <div class="text-red-500 font-bold">₫199.000</div>
+                <div class="border rounded p-2 hover:shadow-lg transition">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/150" alt="Product" class="w-full h-32 object-cover mb-2" />
+                        <div class="absolute top-0 right-0 bg-red-500 text-white text-xs px-1 py-0.5 rounded-bl">-50%</div>
+                    </div>
+                    <div class="text-red-500 font-bold text-lg">₫199.000</div>
                     <div class="text-gray-500 text-sm line-through">₫399.000</div>
-                    <div class="bg-red-100 text-red-500 text-xs px-1 py-0.5 rounded mt-1">-50%</div>
+                    <div class="mt-2">
+                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                            <div class="bg-red-500 h-1.5 rounded-full" style="width: 70%"></div>
+                        </div>
+                        <div class="text-xs text-gray-500 mt-1">Đã bán 70%</div>
+                    </div>
                 </div>
-                <!-- Add more flash sale items here -->
+                <!-- Repeat similar structure for more items -->
             </div>
         </div>
     </section>
 
     <!-- Featured Products -->
     <section class="max-w-screen-xl mx-auto mt-6 px-4">
-        <h2 class="text-lg font-semibold mb-4 text-gray-800">Sản Phẩm Nổi Bật</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            <div class="bg-white rounded shadow p-2 hover:shadow-lg transition">
-                <img src="https://via.placeholder.com/200" alt="Product" class="w-full h-40 object-cover mb-2" />
-                <h3 class="text-sm font-medium line-clamp-2">Áo thun nam cổ tròn chất liệu cotton 100%</h3>
-                <div class="flex items-center justify-between mt-2">
-                    <div class="text-red-500 font-bold">₫150.000</div>
-                    <div class="text-xs text-gray-500">Đã bán 1.2k</div>
+        <div class="bg-white rounded shadow p-4">
+            <h2 class="text-lg font-semibold mb-4 text-gray-800">Sản Phẩm Nổi Bật</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <div class="bg-white rounded shadow p-2 hover:shadow-lg transition">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/200" alt="Product" class="w-full h-40 object-cover mb-2" />
+                        <div class="absolute top-0 right-0 bg-red-500 text-white text-xs px-1 py-0.5 rounded-bl">-20%</div>
+                    </div>
+                    <h3 class="text-sm font-medium line-clamp-2 h-10">Áo thun nam cổ tròn chất liệu cotton 100%</h3>
+                    <div class="flex items-center justify-between mt-2">
+                        <div class="text-red-500 font-bold">₫150.000</div>
+                        <div class="text-xs text-gray-500">Đã bán 1.2k</div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="flex items-center">
+                            <div class="text-yellow-400 text-xs">★★★★★</div>
+                            <span class="text-xs text-gray-500 ml-1">(4.9)</span>
+                        </div>
+                    </div>
                 </div>
+                <!-- Repeat similar structure for more items -->
             </div>
-            <!-- Add more featured products here -->
         </div>
     </section>
 
@@ -227,18 +297,7 @@
             © 2025 Shopee Giao Diện. Thiết kế mô phỏng bằng Tailwind CSS.
         </div>
     </footer>
-
-    <script>
-        // Example: Update cart count dynamically
-        document.addEventListener('DOMContentLoaded', () => {
-            const cartCount = document.getElementById('cart-count');
-            // Simulate fetching cart count from an API
-            const updateCartCount = (count) => {
-                cartCount.textContent = count;
-            };
-            updateCartCount(3); // Replace with API call
-        });
-    </script>
+    <script src="bootstrap/js/main.js"></script>
 </body>
 
 </html>
